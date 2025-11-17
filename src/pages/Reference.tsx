@@ -6,6 +6,7 @@ import { labValues } from "@/data/labValues";
 import { assessmentScales } from "@/data/assessmentScales";
 import { useNavigate } from "react-router-dom";
 import { usePreferences } from "@/contexts/PreferencesContext";
+import AppLayout from "@/components/layout/AppLayout";
 
 const Reference = () => {
   const [labSearch, setLabSearch] = useState("");
@@ -21,12 +22,8 @@ const Reference = () => {
   const labCategories = Array.from(new Set(labValues.map((l) => l.category)));
 
   return (
-    <div className="min-h-screen bg-background pb-20">
-      <header className="bg-primary text-primary-foreground p-6 shadow-md">
-        <h1 className="text-2xl font-bold">{t.referenceTitle}</h1>
-      </header>
-
-      <Tabs defaultValue="labs" className="p-4">
+    <AppLayout title={t.referenceTitle} subtitle="Clinical library">
+      <Tabs defaultValue="labs" className="">
         <TabsList className="grid w-full grid-cols-2 mb-4">
           <TabsTrigger value="labs">{t.labValuesTab}</TabsTrigger>
           <TabsTrigger value="scales">{t.scalesTab}</TabsTrigger>
@@ -120,7 +117,7 @@ const Reference = () => {
           ))}
         </TabsContent>
       </Tabs>
-    </div>
+    </AppLayout>
   );
 };
 

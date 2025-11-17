@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { ChevronLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { assessmentScales } from "@/data/assessmentScales";
+import AppLayout from "@/components/layout/AppLayout";
 
 const ScaleDetail = () => {
   const { id } = useParams();
@@ -22,17 +22,12 @@ const ScaleDetail = () => {
   const totalScore = Object.values(selections).reduce((sum, val) => sum + val, 0);
 
   return (
-    <div className="min-h-screen bg-background pb-20">
-      <header className="bg-primary text-primary-foreground p-4 shadow-md">
-        <div className="flex items-center gap-3">
-          <button onClick={() => navigate("/reference")}>
-            <ChevronLeft size={24} />
-          </button>
-          <h1 className="text-xl font-bold">{scale.name}</h1>
-        </div>
-      </header>
-
-      <div className="p-4 space-y-4">
+    <AppLayout
+      title={scale.name}
+      subtitle={scale.category}
+      onBack={() => navigate("/assessments")}
+      className="space-y-4"
+    >
         <Card className="p-4">
           <p className="text-sm text-muted-foreground">{scale.description}</p>
         </Card>
@@ -88,15 +83,10 @@ const ScaleDetail = () => {
           </Card>
         )}
 
-        <Button
-          onClick={() => setSelections({})}
-          variant="outline"
-          className="w-full"
-        >
+        <Button onClick={() => setSelections({})} variant="outline" className="w-full">
           Reset
         </Button>
-      </div>
-    </div>
+    </AppLayout>
   );
 };
 
