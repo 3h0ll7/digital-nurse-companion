@@ -202,6 +202,152 @@ export const procedures: Procedure[] = [
     ]
   },
   {
+    id: "oxygen-therapy",
+    category: "RESPIRATORY",
+    title: "Oxygen Therapy Administration",
+    description: "Deliver supplemental oxygen safely to improve tissue oxygenation and prevent hypoxemia.",
+    indications: [
+      "Documented hypoxemia",
+      "Post-operative support",
+      "Acute respiratory distress",
+      "Cardiac ischemia",
+      "COPD exacerbation"
+    ],
+    contraindications: [
+      "No absolute contraindications when prescribed",
+      "Use cautiously in CO2 retainers"
+    ],
+    equipment: [
+      "Oxygen source and flowmeter",
+      "Humidifier (as ordered)",
+      "Delivery device (nasal cannula, simple mask, non-rebreather)",
+      "Pulse oximeter",
+      "Signage indicating oxygen in use"
+    ],
+    steps: [
+      "Verify provider order including target saturation",
+      "Perform hand hygiene and identify patient",
+      "Assess airway patency and baseline SpO2",
+      "Assemble and test oxygen delivery device",
+      "Apply device ensuring snug but comfortable fit",
+      "Adjust flow to ordered rate and monitor response",
+      "Educate patient to avoid open flames",
+      "Reassess respiratory status and document"
+    ],
+    complications: [
+      "Dry mucous membranes",
+      "Oxygen toxicity",
+      "CO2 retention",
+      "Skin breakdown from tubing"
+    ],
+    documentation: [
+      "Device and liter flow",
+      "SpO2 response",
+      "Patient tolerance",
+      "Education provided",
+      "Adverse events"
+    ]
+  },
+  {
+    id: "central-line-dressing",
+    category: "VASCULAR ACCESS",
+    title: "Central Line Dressing Change",
+    description: "Maintain catheter sterility and integrity to reduce CLABSI risk.",
+    indications: [
+      "Scheduled dressing change",
+      "Soiled, loose, or damp dressing",
+      "Signs of infection",
+      "Per institutional policy"
+    ],
+    contraindications: [
+      "Hemodynamic instability (delay if unsafe)",
+      "Allergy to dressing materials"
+    ],
+    equipment: [
+      "Central line dressing kit",
+      "Sterile gloves and mask",
+      "Chlorhexidine applicator",
+      "Skin protectant",
+      "Biopatch or antimicrobial disk",
+      "Transparent semipermeable dressing"
+    ],
+    steps: [
+      "Explain procedure and position patient supine",
+      "Perform hand hygiene and don mask",
+      "Remove old dressing using clean technique",
+      "Inspect insertion site for erythema, drainage, or swelling",
+      "Perform hand hygiene and don sterile gloves",
+      "Clean site with chlorhexidine using friction for 30 seconds",
+      "Allow site to air dry completely",
+      "Apply antimicrobial disk and new sterile dressing",
+      "Label dressing with date, time, initials",
+      "Document assessment and patient tolerance"
+    ],
+    complications: [
+      "Catheter dislodgement",
+      "CLABSI",
+      "Skin irritation",
+      "Bleeding"
+    ],
+    documentation: [
+      "Site appearance",
+      "Type of dressing applied",
+      "Patient response",
+      "Education provided",
+      "Any complications"
+    ]
+  },
+  {
+    id: "blood-transfusion",
+    category: "HEMATOLOGY",
+    title: "Blood Transfusion Administration",
+    description: "Safely administer blood products while monitoring for transfusion reactions.",
+    indications: [
+      "Symptomatic anemia",
+      "Acute hemorrhage",
+      "Coagulopathy",
+      "Thrombocytopenia",
+      "Replacement of specific blood components"
+    ],
+    contraindications: [
+      "Patient refusal",
+      "History of severe transfusion reaction without mitigation",
+      "Incompatible crossmatch"
+    ],
+    equipment: [
+      "Blood product with compatibility tag",
+      "IV tubing with filter",
+      "0.9% normal saline",
+      "Vital sign equipment",
+      "Emergency medications (per protocol)"
+    ],
+    steps: [
+      "Verify provider order and obtain consent",
+      "Check vital signs and patent IV access",
+      "Perform two-nurse verification of blood product",
+      "Prime tubing with normal saline",
+      "Start transfusion slowly while monitoring patient",
+      "Increase rate as ordered if no reaction",
+      "Assess for adverse reactions every 15 minutes",
+      "Flush line with saline after transfusion",
+      "Document completion and patient response"
+    ],
+    complications: [
+      "Acute hemolytic reaction",
+      "Febrile non-hemolytic reaction",
+      "Allergic reaction",
+      "Transfusion-associated circulatory overload",
+      "Transfusion-related acute lung injury"
+    ],
+    documentation: [
+      "Product type and lot number",
+      "Start/stop times",
+      "Total volume infused",
+      "Patient assessments and vital signs",
+      "Any reactions and interventions"
+    ]
+  },
+  {
     id: "nasogastric-tube",
     category: "NUTRITION",
     title: "Nasogastric Tube Insertion",
