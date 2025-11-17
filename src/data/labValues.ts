@@ -15,7 +15,7 @@ export const labValues: LabValue[] = [
     unit: "g/dL",
     criticalLow: "<7.0",
     criticalHigh: ">20.0",
-    category: "Hematology"
+    category: "Hematology",
   },
   {
     test: "Hematocrit (Hct)",
@@ -23,7 +23,7 @@ export const labValues: LabValue[] = [
     unit: "%",
     criticalLow: "<20",
     criticalHigh: ">60",
-    category: "Hematology"
+    category: "Hematology",
   },
   {
     test: "White Blood Cells (WBC)",
@@ -31,7 +31,7 @@ export const labValues: LabValue[] = [
     unit: "× 10³/μL",
     criticalLow: "<2.0",
     criticalHigh: ">30.0",
-    category: "Hematology"
+    category: "Hematology",
   },
   {
     test: "Platelets",
@@ -39,15 +39,15 @@ export const labValues: LabValue[] = [
     unit: "× 10³/μL",
     criticalLow: "<50",
     criticalHigh: ">1000",
-    category: "Hematology"
+    category: "Hematology",
   },
   {
     test: "Red Blood Cells (RBC)",
     normalRange: "Male: 4.5-5.9, Female: 4.0-5.2",
     unit: "× 10⁶/μL",
-    category: "Hematology"
+    category: "Hematology",
   },
-  
+
   // Chemistry
   {
     test: "Sodium (Na)",
@@ -55,7 +55,7 @@ export const labValues: LabValue[] = [
     unit: "mEq/L",
     criticalLow: "<120",
     criticalHigh: ">160",
-    category: "Chemistry"
+    category: "Chemistry",
   },
   {
     test: "Potassium (K)",
@@ -63,7 +63,7 @@ export const labValues: LabValue[] = [
     unit: "mEq/L",
     criticalLow: "<2.5",
     criticalHigh: ">6.5",
-    category: "Chemistry"
+    category: "Chemistry",
   },
   {
     test: "Chloride (Cl)",
@@ -71,7 +71,7 @@ export const labValues: LabValue[] = [
     unit: "mEq/L",
     criticalLow: "<80",
     criticalHigh: ">120",
-    category: "Chemistry"
+    category: "Chemistry",
   },
   {
     test: "Glucose",
@@ -79,20 +79,20 @@ export const labValues: LabValue[] = [
     unit: "mg/dL",
     criticalLow: "<40",
     criticalHigh: ">400",
-    category: "Chemistry"
+    category: "Chemistry",
   },
   {
     test: "Blood Urea Nitrogen (BUN)",
     normalRange: "7-20",
     unit: "mg/dL",
-    category: "Chemistry"
+    category: "Chemistry",
   },
   {
     test: "Creatinine",
     normalRange: "Male: 0.7-1.3, Female: 0.6-1.1",
     unit: "mg/dL",
     criticalHigh: ">4.0",
-    category: "Chemistry"
+    category: "Chemistry",
   },
   {
     test: "Calcium",
@@ -100,7 +100,7 @@ export const labValues: LabValue[] = [
     unit: "mg/dL",
     criticalLow: "<6.5",
     criticalHigh: ">13.0",
-    category: "Chemistry"
+    category: "Chemistry",
   },
   {
     test: "Magnesium",
@@ -108,109 +108,160 @@ export const labValues: LabValue[] = [
     unit: "mg/dL",
     criticalLow: "<1.0",
     criticalHigh: ">4.0",
-    category: "Chemistry"
+    category: "Chemistry",
   },
-  
+  {
+    test: "Phosphorus",
+    normalRange: "2.5-4.5",
+    unit: "mg/dL",
+    category: "Chemistry",
+  },
+  {
+    test: "Serum Osmolality",
+    normalRange: "275-295",
+    unit: "mOsm/kg",
+    category: "Chemistry",
+  },
+  {
+    test: "Lactic Acid",
+    normalRange: "0.5-2.2",
+    unit: "mmol/L",
+    criticalHigh: ">4.0",
+    category: "Chemistry",
+  },
+
   // Liver Function
   {
     test: "ALT (SGPT)",
     normalRange: "7-56",
     unit: "U/L",
-    category: "Liver Function"
+    category: "Liver Function",
   },
   {
     test: "AST (SGOT)",
     normalRange: "10-40",
     unit: "U/L",
-    category: "Liver Function"
+    category: "Liver Function",
   },
   {
     test: "Alkaline Phosphatase",
     normalRange: "30-120",
     unit: "U/L",
-    category: "Liver Function"
+    category: "Liver Function",
   },
   {
     test: "Total Bilirubin",
     normalRange: "0.1-1.2",
     unit: "mg/dL",
     criticalHigh: ">12.0",
-    category: "Liver Function"
+    category: "Liver Function",
   },
   {
     test: "Albumin",
     normalRange: "3.5-5.0",
     unit: "g/dL",
-    category: "Liver Function"
+    category: "Liver Function",
   },
-  
+  {
+    test: "Ammonia",
+    normalRange: "15-45",
+    unit: "mcg/dL",
+    category: "Liver Function",
+  },
+
   // Coagulation
   {
     test: "PT (Prothrombin Time)",
     normalRange: "11-13.5",
     unit: "seconds",
-    category: "Coagulation"
+    category: "Coagulation",
   },
   {
     test: "INR",
     normalRange: "0.8-1.2",
     unit: "ratio",
     criticalHigh: ">5.0",
-    category: "Coagulation"
+    category: "Coagulation",
   },
   {
     test: "aPTT",
     normalRange: "25-35",
     unit: "seconds",
-    category: "Coagulation"
+    category: "Coagulation",
   },
-  
+  {
+    test: "D-Dimer",
+    normalRange: "<0.5",
+    unit: "μg/mL FEU",
+    category: "Coagulation",
+  },
+
   // Cardiac
   {
     test: "Troponin I",
     normalRange: "<0.04",
     unit: "ng/mL",
-    category: "Cardiac"
+    category: "Cardiac",
   },
   {
     test: "BNP",
     normalRange: "<100",
     unit: "pg/mL",
-    category: "Cardiac"
+    category: "Cardiac",
   },
   {
     test: "CK-MB",
     normalRange: "<5",
     unit: "ng/mL",
-    category: "Cardiac"
+    category: "Cardiac",
   },
-  
+  {
+    test: "Procalcitonin",
+    normalRange: "<0.1",
+    unit: "ng/mL",
+    category: "Cardiac",
+  },
+
   // Lipid Panel
   {
     test: "Total Cholesterol",
     normalRange: "<200",
     unit: "mg/dL",
-    category: "Lipids"
+    category: "Lipids",
   },
   {
     test: "LDL",
     normalRange: "<100",
     unit: "mg/dL",
-    category: "Lipids"
+    category: "Lipids",
   },
   {
     test: "HDL",
     normalRange: "Male: >40, Female: >50",
     unit: "mg/dL",
-    category: "Lipids"
+    category: "Lipids",
   },
   {
     test: "Triglycerides",
     normalRange: "<150",
     unit: "mg/dL",
-    category: "Lipids"
+    category: "Lipids",
   },
-  
+
+  // Endocrine/Metabolic
+  {
+    test: "Hemoglobin A1c",
+    normalRange: "<5.7",
+    unit: "%",
+    category: "Endocrine",
+  },
+  {
+    test: "C-Reactive Protein",
+    normalRange: "<1.0",
+    unit: "mg/dL",
+    category: "Endocrine",
+  },
+
   // Arterial Blood Gas
   {
     test: "pH",
@@ -218,7 +269,7 @@ export const labValues: LabValue[] = [
     unit: "",
     criticalLow: "<7.20",
     criticalHigh: ">7.60",
-    category: "ABG"
+    category: "ABG",
   },
   {
     test: "PaCO2",
@@ -226,14 +277,14 @@ export const labValues: LabValue[] = [
     unit: "mmHg",
     criticalLow: "<20",
     criticalHigh: ">70",
-    category: "ABG"
+    category: "ABG",
   },
   {
     test: "PaO2",
     normalRange: "80-100",
     unit: "mmHg",
     criticalLow: "<60",
-    category: "ABG"
+    category: "ABG",
   },
   {
     test: "HCO3",
@@ -241,33 +292,39 @@ export const labValues: LabValue[] = [
     unit: "mEq/L",
     criticalLow: "<15",
     criticalHigh: ">40",
-    category: "ABG"
+    category: "ABG",
   },
   {
     test: "Oxygen Saturation",
     normalRange: "95-100",
     unit: "%",
     criticalLow: "<90",
-    category: "ABG"
+    category: "ABG",
   },
-  
+  {
+    test: "Base Excess",
+    normalRange: "-2 to +2",
+    unit: "mEq/L",
+    category: "ABG",
+  },
+
   // Thyroid
   {
     test: "TSH",
     normalRange: "0.4-4.0",
     unit: "mIU/L",
-    category: "Thyroid"
+    category: "Thyroid",
   },
   {
     test: "T4 (Thyroxine)",
     normalRange: "4.5-12.0",
     unit: "μg/dL",
-    category: "Thyroid"
+    category: "Thyroid",
   },
   {
     test: "T3",
     normalRange: "80-200",
     unit: "ng/dL",
-    category: "Thyroid"
-  }
+    category: "Thyroid",
+  },
 ];

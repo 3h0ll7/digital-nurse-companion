@@ -1,15 +1,17 @@
 import { BookOpen, Calculator, MessageSquare, Info } from "lucide-react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { usePreferences } from "@/contexts/PreferencesContext";
 
 const BottomNav = () => {
   const location = useLocation();
   const navigate = useNavigate();
+  const { t } = usePreferences();
 
   const navItems = [
-    { path: "/procedures", icon: BookOpen, label: "Procedures" },
-    { path: "/calculators", icon: Calculator, label: "Calculators" },
-    { path: "/ai-assistant", icon: MessageSquare, label: "AI Assistant" },
-    { path: "/reference", icon: Info, label: "Reference" },
+    { path: "/procedures", icon: BookOpen, label: t.navProcedures },
+    { path: "/calculators", icon: Calculator, label: t.navCalculators },
+    { path: "/ai-assistant", icon: MessageSquare, label: t.navAssistant },
+    { path: "/reference", icon: Info, label: t.navReference },
   ];
 
   return (

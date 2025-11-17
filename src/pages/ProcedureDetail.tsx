@@ -2,11 +2,13 @@ import { useParams, useNavigate } from "react-router-dom";
 import { procedures, additionalProcedures } from "@/data/procedures";
 import { ChevronLeft, AlertCircle, CheckCircle2, Package, Stethoscope, FileText } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { usePreferences } from "@/contexts/PreferencesContext";
 
 const ProcedureDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  
+  const { t } = usePreferences();
+
   const allProcedures = [...procedures, ...additionalProcedures];
   const procedure = allProcedures.find(p => p.id === id);
 
@@ -16,7 +18,7 @@ const ProcedureDetail = () => {
         <div className="text-center">
           <p className="text-muted-foreground">Procedure not found</p>
           <Button onClick={() => navigate("/procedures")} className="mt-4">
-            Back to Procedures
+            {t.backToProcedures}
           </Button>
         </div>
       </div>
@@ -46,7 +48,7 @@ const ProcedureDetail = () => {
           <div className="bg-card p-4 rounded-xl shadow-card">
             <div className="flex items-center gap-2 mb-3">
               <CheckCircle2 className="text-medical-green" size={20} />
-              <h2 className="font-bold text-card-foreground">Indications</h2>
+              <h2 className="font-bold text-card-foreground">{t.indications}</h2>
             </div>
             <ul className="space-y-2">
               {procedure.indications.map((item, index) => (
@@ -63,7 +65,7 @@ const ProcedureDetail = () => {
           <div className="bg-card p-4 rounded-xl shadow-card">
             <div className="flex items-center gap-2 mb-3">
               <AlertCircle className="text-medical-red" size={20} />
-              <h2 className="font-bold text-card-foreground">Contraindications</h2>
+              <h2 className="font-bold text-card-foreground">{t.contraindications}</h2>
             </div>
             <ul className="space-y-2">
               {procedure.contraindications.map((item, index) => (
@@ -80,7 +82,7 @@ const ProcedureDetail = () => {
           <div className="bg-card p-4 rounded-xl shadow-card">
             <div className="flex items-center gap-2 mb-3">
               <Package className="text-primary" size={20} />
-              <h2 className="font-bold text-card-foreground">Equipment Needed</h2>
+              <h2 className="font-bold text-card-foreground">{t.equipment}</h2>
             </div>
             <ul className="space-y-2">
               {procedure.equipment.map((item, index) => (
@@ -97,7 +99,7 @@ const ProcedureDetail = () => {
           <div className="bg-card p-4 rounded-xl shadow-card">
             <div className="flex items-center gap-2 mb-3">
               <Stethoscope className="text-primary" size={20} />
-              <h2 className="font-bold text-card-foreground">Procedure Steps</h2>
+              <h2 className="font-bold text-card-foreground">{t.steps}</h2>
             </div>
             <ol className="space-y-3">
               {procedure.steps.map((step, index) => (
@@ -116,7 +118,7 @@ const ProcedureDetail = () => {
           <div className="bg-card p-4 rounded-xl shadow-card">
             <div className="flex items-center gap-2 mb-3">
               <AlertCircle className="text-medical-yellow" size={20} />
-              <h2 className="font-bold text-card-foreground">Potential Complications</h2>
+              <h2 className="font-bold text-card-foreground">{t.complications}</h2>
             </div>
             <ul className="space-y-2">
               {procedure.complications.map((item, index) => (
@@ -133,7 +135,7 @@ const ProcedureDetail = () => {
           <div className="bg-card p-4 rounded-xl shadow-card">
             <div className="flex items-center gap-2 mb-3">
               <FileText className="text-primary" size={20} />
-              <h2 className="font-bold text-card-foreground">Documentation</h2>
+              <h2 className="font-bold text-card-foreground">{t.documentation}</h2>
             </div>
             <ul className="space-y-2">
               {procedure.documentation.map((item, index) => (

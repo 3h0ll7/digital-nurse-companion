@@ -12,27 +12,32 @@ import Reference from "./pages/Reference";
 import ScaleDetail from "./pages/ScaleDetail";
 import BottomNav from "./components/BottomNav";
 import NotFound from "./pages/NotFound";
+import PreferencesDrawer from "./components/PreferencesDrawer";
+import { PreferencesProvider } from "./contexts/PreferencesContext";
 
 const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Navigate to="/procedures" replace />} />
-          <Route path="/procedures" element={<><Procedures /><BottomNav /></>} />
-          <Route path="/procedure/:id" element={<><ProcedureDetail /><BottomNav /></>} />
-          <Route path="/calculators" element={<><Calculators /><BottomNav /></>} />
-          <Route path="/calculator/:id" element={<><CalculatorDetail /><BottomNav /></>} />
-          <Route path="/ai-assistant" element={<><AIAssistant /><BottomNav /></>} />
-          <Route path="/reference" element={<><Reference /><BottomNav /></>} />
-          <Route path="/scale/:id" element={<><ScaleDetail /><BottomNav /></>} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
+      <PreferencesProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Navigate to="/procedures" replace />} />
+            <Route path="/procedures" element={<><Procedures /><BottomNav /></>} />
+            <Route path="/procedure/:id" element={<><ProcedureDetail /><BottomNav /></>} />
+            <Route path="/calculators" element={<><Calculators /><BottomNav /></>} />
+            <Route path="/calculator/:id" element={<><CalculatorDetail /><BottomNav /></>} />
+            <Route path="/ai-assistant" element={<><AIAssistant /><BottomNav /></>} />
+            <Route path="/reference" element={<><Reference /><BottomNav /></>} />
+            <Route path="/scale/:id" element={<><ScaleDetail /><BottomNav /></>} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </BrowserRouter>
+        <PreferencesDrawer />
+      </PreferencesProvider>
     </TooltipProvider>
   </QueryClientProvider>
 );

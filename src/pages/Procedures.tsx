@@ -1,13 +1,18 @@
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Search, ChevronRight } from "lucide-react";
-import { procedures, additionalProcedures } from "@/data/procedures";
+import { procedures, additionalProcedures, type Procedure } from "@/data/procedures";
 import { useNavigate } from "react-router-dom";
+import { usePreferences } from "@/contexts/PreferencesContext";
+import { Drawer, DrawerContent, DrawerDescription, DrawerFooter, DrawerHeader, DrawerTitle } from "@/components/ui/drawer";
+import { Button } from "@/components/ui/button";
 
 const Procedures = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const navigate = useNavigate();
-  
+  const { t } = usePreferences();
+  const [activeProcedure, setActiveProcedure] = useState<Procedure | null>(null);
+
   const allProcedures = [...procedures, ...additionalProcedures];
   
   const filteredProcedures = allProcedures.filter(proc =>
@@ -25,7 +30,7 @@ const Procedures = () => {
   return (
     <div className="min-h-screen bg-background pb-20">
       <header className="bg-primary text-primary-foreground p-6 shadow-md">
-        <h1 className="text-2xl font-bold">Nursing Procedures</h1>
+        <h1 className="text-2xl font-bold">{t.proceduresTitle}</h1>
       </header>
 
       <div className="p-4">
@@ -33,7 +38,7 @@ const Procedures = () => {
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground" size={20} />
           <Input
             type="text"
-            placeholder="Search procedures..."
+            placeholder={t.searchProcedures}
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="pl-10 bg-card"
@@ -49,7 +54,7 @@ const Procedures = () => {
                 : "bg-secondary text-secondary-foreground"
             }`}
           >
-            All
+            {t.allLabel}
           </button>
           {categories.map((category) => (
             <button
@@ -70,7 +75,7 @@ const Procedures = () => {
           {displayProcedures.map((procedure) => (
             <div
               key={procedure.id}
-              onClick={() => navigate(`/procedure/${procedure.id}`)}
+              onClick={() => setActiveProcedure(procedure)}
               className="bg-card p-4 rounded-xl shadow-card hover:shadow-card-hover transition-shadow cursor-pointer"
             >
               <div className="flex items-start justify-between">
@@ -93,10 +98,40 @@ const Procedures = () => {
 
         {displayProcedures.length === 0 && (
           <div className="text-center py-12 text-muted-foreground">
-            <p>No procedures found</p>
+            <p>{t.noProcedures}</p>
           </div>
         )}
       </div>
+
+      <Drawer open={Boolean(activeProcedure)} onOpenChange={(open) => !open && setActiveProcedure(null)}>
+        <DrawerContent className="pb-6">
+          <DrawerHeader className="text-left">
+            <p className="text-xs uppercase tracking-wide text-muted-foreground">{t.quickViewTitle}</p>
+            <DrawerTitle>{activeProcedure?.title}</DrawerTitle>
+            <DrawerDescription>{activeProcedure?.category}</DrawerDescription>
+          </DrawerHeader>
+          <div className="px-4 space-y-4">
+            <p className="text-sm text-muted-foreground">{t.quickViewDescription}</p>
+            <div className="rounded-xl border p-4 bg-card">
+              <p className="text-card-foreground whitespace-pre-line">
+                {activeProcedure?.description}
+              </p>
+            </div>
+          </div>
+          <DrawerFooter>
+            <Button
+              onClick={() => {
+                if (activeProcedure) {
+                  navigate(`/procedure/${activeProcedure.id}`);
+                  setActiveProcedure(null);
+                }
+              }}
+            >
+              {t.viewFullProcedure}
+            </Button>
+          </DrawerFooter>
+        </DrawerContent>
+      </Drawer>
     </div>
   );
 };

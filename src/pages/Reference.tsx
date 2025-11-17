@@ -5,10 +5,12 @@ import { Search, Droplet, Activity } from "lucide-react";
 import { labValues } from "@/data/labValues";
 import { assessmentScales } from "@/data/assessmentScales";
 import { useNavigate } from "react-router-dom";
+import { usePreferences } from "@/contexts/PreferencesContext";
 
 const Reference = () => {
   const [labSearch, setLabSearch] = useState("");
   const navigate = useNavigate();
+  const { t } = usePreferences();
 
   const filteredLabs = labValues.filter(
     (lab) =>
@@ -21,13 +23,13 @@ const Reference = () => {
   return (
     <div className="min-h-screen bg-background pb-20">
       <header className="bg-primary text-primary-foreground p-6 shadow-md">
-        <h1 className="text-2xl font-bold">Quick Reference</h1>
+        <h1 className="text-2xl font-bold">{t.referenceTitle}</h1>
       </header>
 
       <Tabs defaultValue="labs" className="p-4">
         <TabsList className="grid w-full grid-cols-2 mb-4">
-          <TabsTrigger value="labs">Lab Values</TabsTrigger>
-          <TabsTrigger value="scales">Assessment Scales</TabsTrigger>
+          <TabsTrigger value="labs">{t.labValuesTab}</TabsTrigger>
+          <TabsTrigger value="scales">{t.scalesTab}</TabsTrigger>
         </TabsList>
 
         <TabsContent value="labs" className="space-y-4">
@@ -38,7 +40,7 @@ const Reference = () => {
             />
             <Input
               type="text"
-              placeholder="Search lab values..."
+              placeholder={t.labSearchPlaceholder}
               value={labSearch}
               onChange={(e) => setLabSearch(e.target.value)}
               className="pl-10 bg-card"
@@ -48,7 +50,7 @@ const Reference = () => {
           <div className="bg-card rounded-xl shadow-card overflow-hidden">
             <div className="flex items-center gap-2 p-4 bg-medical-blue-light border-b">
               <Droplet className="text-primary" size={20} />
-              <h2 className="font-bold text-card-foreground">Normal Lab Values</h2>
+              <h2 className="font-bold text-card-foreground">{t.normalLabValues}</h2>
             </div>
 
             <div className="overflow-x-auto">
@@ -101,7 +103,7 @@ const Reference = () => {
         <TabsContent value="scales" className="space-y-3">
           <div className="flex items-center gap-2 mb-4 p-4 bg-card rounded-xl">
             <Activity className="text-primary" size={20} />
-            <h2 className="font-bold text-card-foreground">Assessment Scales</h2>
+            <h2 className="font-bold text-card-foreground">{t.assessmentScales}</h2>
           </div>
 
           {assessmentScales.map((scale) => (
