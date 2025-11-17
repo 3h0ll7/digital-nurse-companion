@@ -6,6 +6,8 @@ import { useNavigate } from "react-router-dom";
 import { usePreferences } from "@/contexts/PreferencesContext";
 import { Drawer, DrawerContent, DrawerDescription, DrawerFooter, DrawerHeader, DrawerTitle } from "@/components/ui/drawer";
 import { Button } from "@/components/ui/button";
+import AppLayout from "@/components/layout/AppLayout";
+import { Card } from "@/components/ui/card";
 
 const Procedures = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -27,15 +29,34 @@ const Procedures = () => {
     ? filteredProcedures 
     : filteredProcedures.filter(p => p.category === selectedCategory);
 
-  return (
-    <div className="min-h-screen bg-background pb-20">
-      <header className="bg-primary text-primary-foreground p-6 shadow-md">
-        <h1 className="text-2xl font-bold">{t.proceduresTitle}</h1>
-      </header>
+  const workflowPhases = [
+    {
+      title: "Pre-procedure",
+      description: "Verification, consent, and patient preparation",
+    },
+    {
+      title: "Intra-procedure",
+      description: "Sterile technique, monitoring, escalation cues",
+    },
+    {
+      title: "Post-procedure",
+      description: "Recovery, documentation, and patient teaching",
+    },
+  ];
 
-      <div className="p-4">
-        <div className="relative mb-4">
-          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground" size={20} />
+  return (
+    <AppLayout
+      title={t.proceduresTitle}
+      subtitle="Evidence-based workflows"
+      actions={
+        <Button size="sm" variant="secondary" onClick={() => navigate("/calculators")}>
+          Clinical tools
+        </Button>
+      }
+    >
+      <section className="space-y-4">
+        <div className="relative">
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" size={20} />
           <Input
             type="text"
             placeholder={t.searchProcedures}
@@ -45,7 +66,7 @@ const Procedures = () => {
           />
         </div>
 
-        <div className="flex gap-2 mb-4 overflow-x-auto pb-2">
+        <div className="flex gap-2 overflow-x-auto pb-2">
           <button
             onClick={() => setSelectedCategory("All")}
             className={`px-4 py-2 rounded-full text-sm whitespace-nowrap transition-colors ${
@@ -70,38 +91,46 @@ const Procedures = () => {
             </button>
           ))}
         </div>
+      </section>
 
-        <div className="space-y-3">
-          {displayProcedures.map((procedure) => (
-            <div
-              key={procedure.id}
-              onClick={() => setActiveProcedure(procedure)}
-              className="bg-card p-4 rounded-xl shadow-card hover:shadow-card-hover transition-shadow cursor-pointer"
-            >
-              <div className="flex items-start justify-between">
-                <div className="flex-1">
-                  <div className="text-xs font-semibold text-primary mb-1">
-                    {procedure.category}
-                  </div>
-                  <h3 className="font-bold text-card-foreground mb-1">
-                    {procedure.title}
-                  </h3>
-                  <p className="text-sm text-muted-foreground line-clamp-2">
-                    {procedure.description}
-                  </p>
+      <section className="grid gap-3 sm:grid-cols-3">
+        {workflowPhases.map((phase) => (
+          <Card key={phase.title} className="p-4 shadow-card">
+            <p className="text-xs uppercase tracking-widest text-muted-foreground">{phase.title}</p>
+            <p className="mt-1 text-sm text-card-foreground">{phase.description}</p>
+          </Card>
+        ))}
+      </section>
+
+      <section className="space-y-3">
+        {displayProcedures.map((procedure) => (
+          <div
+            key={procedure.id}
+            onClick={() => setActiveProcedure(procedure)}
+            className="bg-card p-4 rounded-xl shadow-card hover:shadow-card-hover transition-shadow cursor-pointer"
+          >
+            <div className="flex items-start justify-between">
+              <div className="flex-1">
+                <div className="text-xs font-semibold text-primary mb-1">
+                  {procedure.category}
                 </div>
-                <ChevronRight className="text-muted-foreground ml-2 flex-shrink-0" size={20} />
+                <h3 className="font-bold text-card-foreground mb-1">
+                  {procedure.title}
+                </h3>
+                <p className="text-sm text-muted-foreground line-clamp-2">
+                  {procedure.description}
+                </p>
               </div>
+              <ChevronRight className="text-muted-foreground ml-2 flex-shrink-0" size={20} />
             </div>
-          ))}
-        </div>
-
+          </div>
+        ))}
         {displayProcedures.length === 0 && (
           <div className="text-center py-12 text-muted-foreground">
             <p>{t.noProcedures}</p>
           </div>
         )}
-      </div>
+      </section>
 
       <Drawer open={Boolean(activeProcedure)} onOpenChange={(open) => !open && setActiveProcedure(null)}>
         <DrawerContent className="pb-6">
@@ -132,7 +161,7 @@ const Procedures = () => {
           </DrawerFooter>
         </DrawerContent>
       </Drawer>
-    </div>
+    </AppLayout>
   );
 };
 

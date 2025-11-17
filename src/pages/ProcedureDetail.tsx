@@ -1,8 +1,9 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { procedures, additionalProcedures } from "@/data/procedures";
-import { ChevronLeft, AlertCircle, CheckCircle2, Package, Stethoscope, FileText } from "lucide-react";
+import { AlertCircle, CheckCircle2, Package, Stethoscope, FileText } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { usePreferences } from "@/contexts/PreferencesContext";
+import AppLayout from "@/components/layout/AppLayout";
 
 const ProcedureDetail = () => {
   const { id } = useParams();
@@ -26,20 +27,12 @@ const ProcedureDetail = () => {
   }
 
   return (
-    <div className="min-h-screen bg-background pb-20">
-      <header className="bg-primary text-primary-foreground p-4 shadow-md sticky top-0 z-10">
-        <div className="flex items-center gap-3">
-          <button onClick={() => navigate("/procedures")}>
-            <ChevronLeft size={24} />
-          </button>
-          <div>
-            <div className="text-xs opacity-90">{procedure.category}</div>
-            <h1 className="text-xl font-bold">{procedure.title}</h1>
-          </div>
-        </div>
-      </header>
-
-      <div className="p-4 space-y-4">
+    <AppLayout
+      title={procedure.title}
+      subtitle={procedure.category}
+      onBack={() => navigate("/procedures")}
+      className="space-y-4"
+    >
         <div className="bg-card p-4 rounded-xl shadow-card">
           <p className="text-card-foreground">{procedure.description}</p>
         </div>
@@ -147,8 +140,7 @@ const ProcedureDetail = () => {
             </ul>
           </div>
         )}
-      </div>
-    </div>
+    </AppLayout>
   );
 };
 

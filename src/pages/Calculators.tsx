@@ -1,5 +1,6 @@
 import { Droplet, Activity, Scale, Calculator as CalcIcon } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import AppLayout from "@/components/layout/AppLayout";
 
 const calculators = [
   {
@@ -32,12 +33,8 @@ const Calculators = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen bg-background pb-20">
-      <header className="bg-primary text-primary-foreground p-6 shadow-md">
-        <h1 className="text-2xl font-bold">Clinical Calculators</h1>
-      </header>
-
-      <div className="p-4 space-y-3">
+    <AppLayout title="Clinical Calculators" subtitle="Smart dosing & drip tools">
+      <div className="space-y-3">
         {calculators.map((calc) => {
           const Icon = calc.icon;
           return (
@@ -63,7 +60,7 @@ const Calculators = () => {
           );
         })}
       </div>
-    </div>
+    </AppLayout>
   );
 };
 
