@@ -50,7 +50,7 @@ const AITools = () => {
         </div>
       }
     >
-      <section className="grid grid-cols-1 gap-4 rounded-3xl border border-white/10 bg-white/5 p-6 text-white shadow-[0_25px_80px_rgba(0,0,0,0.45)] md:grid-cols-[1.2fr,0.8fr]">
+      <section className="grid grid-cols-1 gap-4 rounded-3xl border border-white/10 bg-white/5 p-4 text-white shadow-[0_25px_80px_rgba(0,0,0,0.45)] sm:p-6 md:grid-cols-[1.2fr,0.8fr]">
         <div className="space-y-4">
           <p className="text-xs uppercase tracking-[0.4em] text-white/70">Neo-brutalist launchpad</p>
           <h2 className="text-3xl font-semibold sm:text-4xl">
@@ -95,7 +95,7 @@ const AITools = () => {
 
       <Card className="border-white/10 bg-card/80 p-0 shadow-[0_20px_60px_rgba(0,0,0,0.45)]">
         <Tabs value={activeCategory} onValueChange={setActiveCategory}>
-          <div className="flex flex-col gap-6 px-6 py-5">
+          <div className="flex flex-col gap-6 px-4 py-5 sm:px-6">
             <TabsList className="flex w-full flex-wrap justify-start gap-2 rounded-2xl bg-white/5 p-2">
               {aiToolCategories.map((category) => (
                 <TabsTrigger
@@ -116,7 +116,7 @@ const AITools = () => {
             </div>
           </div>
           {aiToolCategories.map((category) => (
-            <TabsContent key={category.name} value={category.name} className="px-6 pb-6">
+            <TabsContent key={category.name} value={category.name} className="px-4 pb-6 sm:px-6">
               <div className="flex flex-col gap-4 lg:grid lg:grid-cols-2 xl:grid-cols-3">
                 {category.tools.map((tool) => (
                   <Card
